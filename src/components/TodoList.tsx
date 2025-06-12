@@ -1,4 +1,4 @@
-import {Edit, Trash2, Save, X} from "lucide-react";
+import {Edit, Trash2, Save, X, Square, CheckSquare} from "lucide-react";
 import type { TodoListProps} from "../types.ts";
 import {useState} from "react";
 
@@ -38,6 +38,10 @@ const TodoList= ({todos, dispatch}: TodoListProps) => {
         setEditText("");
     }
 
+    const handleToggle = (id: number) => {
+        dispatch({type: "COMPLETE", payload: id});
+    }
+
     return (
         <>
             <ul className="space-y-2">
@@ -46,6 +50,22 @@ const TodoList= ({todos, dispatch}: TodoListProps) => {
                         <li key={todo.id} className="flex items-center justify-between bg-cf-gray p-2" >
                             {editId === todo.id ? (
                                 <>
+                                    <div className="flex items-center justify-between">
+
+
+                                    </div>
+
+                                    <button
+                                    className="text-green-500"
+                                    onClick={handleToggle(todo.id)}
+                                    >
+                                        {todo.completed ? (
+                                            <CheckSquare size={16} />
+                                        ) : (
+                                            <Square size={18}/>
+                                            )}
+                                    </button>
+                                    <span>{todo.text}</span>
                                     <div className="flex flex-1">
                                         <input
                                             type="text"
