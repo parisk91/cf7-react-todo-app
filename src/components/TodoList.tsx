@@ -38,7 +38,7 @@ const TodoList= ({todos, dispatch}: TodoListProps) => {
         setEditText("");
     }
 
-    const handleToggle = (id: number) => {
+    const handleToggle = (id: number) => () => {
         dispatch({type: "COMPLETE", payload: id});
     }
 
